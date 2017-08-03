@@ -56,12 +56,23 @@
   > 该命令仅仅是做了一个初始化操作，项目中的文件还并没有被跟踪。
   > 你可以通过 `git add` 命令来实现对指定文件的跟踪，然后执行 `git commit` 命令提交：
   ```
-  $ git add <file name>
   $ git add index.md
   $ git commit -m 'added index.md file to this repository'
   ```
 
 + **克隆现有的仓库**
+
+  > 如果你想获得一份已经存在的 Git 仓库的拷贝，就需要用到 `git clone` 命令。
+  > 克隆仓库的命令格式是 `git clone [url]`。比如，要克隆 jQuery 库，可以用下面的命令：
+  ```
+  $ git clone git@github.com:jquery/jquery.git
+  ```
+  > 这个命令执行之后，会在当前目录下创建一个名为 "jquery" 的目录，并在这个目录下初始化一个 `.git` 文件夹，从远程仓库拉取下所有数据放入 `.git` 文件夹，然后从中读取最新版本的文件的拷贝。
+  > 如果你想在克隆远程仓库的时候，自定义本地仓库的名字，你可以使用如下命令：
+  ```
+  $ git clone git@github.com:jquery/jquery.git my-jquery
+  ```
+  > 这将执行与上一个命令相同的操作，不过在本地创建的仓库名字变为 `my-jquery`。
 
 ### 记录每次更新到仓库
 
