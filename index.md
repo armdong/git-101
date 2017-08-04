@@ -207,6 +207,10 @@
 
 - **移动文件**
 
+  > Git 中移动文件可以用这个命令 `git mv <file_from> <file_to>`
+  ```
+  $ git mv index.js ./src/index.js
+  ```
 
 
 ### 查看提交历史
