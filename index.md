@@ -215,6 +215,63 @@
 
 ### 查看提交历史
 
+> 如果想查看一个项目的提交历史，可以使用 `git log` 命令进行查看。
+
+> 如果想显示每次提交的内容差异，一个常用的选项是 `-p`，你也可以加上 `-2` 来显示最近两次提交：
+  ```
+  $ git log -p
+  $ git log -p -2
+  ```
+
+> 如果你想看到每次提交的简略的统计信息，你可以使用 `--stat` 选项：
+  ```
+  $ git log --stat
+  ```
+  > `--stat` 选项在每次提交的下面列出额外的所有被修改的文件、有多少文件被修改了以及被修改过的文件的哪些行被移除或是添加了，每次提交的最后还有一个总结。
+
+> 另外一个常用的选项是 `--pretty`。这个选项可以制定使用不同于默认格式的方式展示提交历史。这个选项有一些内建的子选项可供使用。比如 `oneline` 将每个提交放在一行显示，查看的提交数很大时非常有用。另外还有 `short` , `full` 和 `fuller` 可以用。
+  ```
+  $ git log --pretty=oneline
+  $ git log --pretty=short
+  $ git log --pretty=full
+  $ git log --pretty=fuller
+  ...
+  ```
+
+> 其中，最有意思的是 `format`，可以定制要显示的记录格式。这样的输出对后期提取分析格外有用——因为你知道输出的格式不会随着 Git 的更新而发生改变：
+  ```
+  $ git log --pretty=format:"%h - $an, $ar : $s"
+  7f32bb6 - armdong, 3 days ago : 移动文件
+  a6105db - armdong, 3 days ago : 移除文件
+  129a1fd - armdong, 3 days ago : 跳过使用暂存区域
+  d3a5ac8 - armdong, 3 days ago : 提交更新
+  2331e2f - armdong, 3 days ago : 查看已暂存和未暂存的修改
+  cb0395d - armdong, 3 days ago : 忽略文件
+  f5a40db - armdong, 3 days ago : 状态简览调整
+  264c059 - armdong, 3 days ago : 状态简览
+  ...
+  ```
+
+`git log --pretty=format` 常用的选项如下：
+ item | description
+ :--- | :---
+ %H   | 提交对象（commit）的完整哈希字串
+ %h   | 提交对象的简短哈希字串
+ %T   | 树对象（tree）的完整哈希字串
+ %t   | 树对象的简短哈希字串
+ %P   | 父对象（parent）的完整哈希字串
+ %p   | 父对象的简短哈希字串
+ %an  | 作者（author）的名字
+ %ae  | 作者的电子邮件地址
+ %ad  | 作者修订日期（可以用 --date= 选项定制格式）
+ %ar  | 作者修订日期，按多久以前的方式显示
+ %cn  | 提交者（committer）的名字
+ %ce  | 提交者的电子邮件地址
+ %cd  | 提交日期
+ %cr  | 提交日期，按多久以前的方式显示
+ %s   | 提交说明
+
+
 ### 撤消操作
 
 ### 远程仓库的使用
