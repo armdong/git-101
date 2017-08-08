@@ -288,6 +288,78 @@
 
 ### 撤消操作
 
+> 有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。此时，可以运行带有 `--amend` 选项的提交命令尝试重新提交：
+```
+$ git commit --amend
+```
+
+> 这个命令会将暂存区中的文件提交。如果自上次提交以来你还未做任何修改（例如，在上次提交后马上执行了此命令），那么快照会保持不变，而你所修改的只是提交信息。
+
+> 文本编辑器启动后，可以看到之前的提交信息。编辑后保存会覆盖原来的提交信息。
+
+> 例如，你提交后发现忘记了暂存某些需要的修改，可以像下面这样操作：
+```
+$ git commit -m 'initial commit'
+$ git add <forgotten_file>
+$ git commit --amend
+```
+> 最终你只会有一个提交，第二次提交将代替第一次提交的结果。
+
+  #### 取消暂存的文件
+  > 例如，你已经修改了两个文件并且想要将它们作为两次独立的修改提交，但是却意外地输入了 `git add .` 暂存了他们两个。如何只取消暂存两个中的一个呢？ `git status` 命令提示了你：
+  ```
+  $ git add .
+  $ git status
+  On branch master
+  Changes to be committed:
+    (use "git reset HEAD <file>..." to unstage)
+
+      renamed:    README.md -> README
+      modified:   CONTRIBUTING.md
+  ```
+  > 在 “Changes to be commited” 文字正下方，提示使用 `git reset HEAD <file>...` 来取消暂存。所以，我们可以这样来取消暂存 `CONTRIBUTING.md` 文件：
+  ```
+  $ git reset HEAD CONTRIBUTING.md
+  Unstaged changes after reset:
+  M	CONTRIBUTING.md
+  $ git status
+  On branch master
+  Changes to be committed:
+    (use "git reset HEAD <file>..." to unstage)
+
+      renamed:    README.md -> README
+
+  Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git checkout -- <file>..." to discard changes in working directory)
+
+      modified:   CONTRIBUTING.md
+  ```
+  > 这个命令有点奇怪，但是起作用了。`CONTRIBUTING.md` 文件已经是修改未暂存的状态了。
+
+  #### 撤销对文件的修改
+  > 如果你并不想保留对 `CONTRIBUTING.md` 文件的修改怎么办？你该如何方便地撤消修改 - 将它还原成上次提交时的样子（或者刚克隆完的样子，或者刚它放入工作目录时的样子）？幸运的是，`git status` 也告诉了你应该如何做。在最后一个例子中，未暂存区域是这样：
+  ```
+  Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git checkout -- <file>..." to discard changes in working directory)
+
+      modified:   CONTRIBUTING.md
+  ```
+
+  > 它非常清楚地告诉了你如何撤消之前所做的修改。让我们来按照提示修改：
+  ```
+  $ git checkout -- CONTRIBUTING.md
+  $ git status
+  On branch master
+  Changes to be committed:
+    (use "git reset HEAD <file>..." to unstage)
+
+      renamed:    README.md -> README
+  ```
+
+  > 可以看到那些修改已经被撤消了。
+
 ### 远程仓库的使用
 
 ### 打标签
