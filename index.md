@@ -362,6 +362,38 @@ $ git commit --amend
 
 ### 远程仓库的使用
 
++ **添加远程库**
+
+  > 现在的情景是，你已经在本地创建了一个 Git 仓库后，又想在 Github 上创建一个 Git 仓库，并且让这两个仓库进行远程同步。这样，Github 上的仓库既可以作为备份，又可以让其他人通过该仓库进行协作。
+
+  > 首先，登录 Github，然后在右上角找到 `New repository` 按钮，点击创建一个新的仓库；
+
+  > 其次，在 `Repository name` 中填入与本地 Git 仓库名称一样的远程仓库名，其他保持默认，点击 `Create repository` 按钮，就成功创建了一个新的 Git 仓库。
+
+  > 目前，在 Github 上这个新创建的 Git 仓库还是空的，我们需要将它与我们本地的 Git 仓库进行关联，命令如下：
+  ```
+  $ git remote add origin git@github.com:armdong/survivejs-webpack.git
+  ```
+
+  > 添加后，远程仓库的名字就是 `orign`，这是 Git 默认的叫法，也可以改成别的，但是 `origin` 这个名字一看就知道是远程库。
+
+  > 下一步，就可以把本地库的所有内容推送到远程库上了。
+
+  > 推送本地仓库 `master` 分支的内容到远程库：
+  ```
+  $ git push -u origin master
+  ```
+
+  > 如果本地还有其他分支，例如 `chapter-01` 分支，远程仓库没有这个分支，这时候可以用下面这个命令推送并使其跟踪远程同名分支：
+  ```
+  $ git push --set-upstream origin chapter-01
+  ```
+
+  > 假如我们在远程仓库新建了一个分支，本地仓库没有该分支，此时我们可以利用 `git checkout --track origin/<branch_name>` 命令在本地新建一个同名分支并自动跟踪远程的分支，例如 `chapter-02`：
+  ```
+  $ git checkout --track origin/chapter-02
+  ```
+
 ### 打标签
 
 ### Git 别名
