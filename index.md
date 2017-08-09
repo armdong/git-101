@@ -240,7 +240,7 @@
 
 > 其中，最有意思的是 `format`，可以定制要显示的记录格式。这样的输出对后期提取分析格外有用——因为你知道输出的格式不会随着 Git 的更新而发生改变：
   ```
-  $ git log --pretty=format:"%h - $an, $ar : $s"
+  $ git log --pretty=format:"%h - %an, %ar : %s"
   7f32bb6 - armdong, 3 days ago : 移动文件
   a6105db - armdong, 3 days ago : 移除文件
   129a1fd - armdong, 3 days ago : 跳过使用暂存区域
