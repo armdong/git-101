@@ -375,7 +375,7 @@ $ git commit --amend
   $ git remote add origin git@github.com:armdong/survivejs-webpack.git
   ```
 
-  > 添加后，远程仓库的名字就是 `orign`，这是 Git 默认的叫法，也可以改成别的，但是 `origin` 这个名字一看就知道是远程库。
+  > 添加后，远程仓库的名字就是 `origin`，这是 Git 默认的叫法，也可以改成别的，但是 `origin` 这个名字一看就知道是远程库。
 
   > 下一步，就可以把本地库的所有内容推送到远程库上了。
 
