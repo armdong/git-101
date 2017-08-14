@@ -400,7 +400,7 @@ $ git commit --amend
 
 ### Git 分支管理
 
-  - **新建分支**
+  - ** 新建分支 **
 
   > 新建一个分支可以通过 `git branch <branch_name>` 命令新建，然后通过 `git checkout <branch_name>` 切换到刚刚新建的分支：
   ```
@@ -412,9 +412,18 @@ $ git commit --amend
   ```
   $ git checkout -b feature_b
   ```
-  
+
   > 这个命令等同下面两条命令：
   ```
   $ git branch feature_b
   $ git checkout feature_b
   ```
+
+  - ** 合并分支 **
+
+  > 当新分支上的开发完成并测试 OK 以后，就可以合并到主分支上，首先切换回主分支 `git checkout master`，然后执行 `git merge <branch_name>`，以 `feature_b` 为例：
+  ```
+  $ git checkout master
+  $ git merge feature_b
+  ```
+  这样，新分支做的修改就合并到主分支上了。
