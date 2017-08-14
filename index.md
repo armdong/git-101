@@ -397,3 +397,24 @@ $ git commit --amend
 ### 打标签
 
 ### Git 别名
+
+### Git 分支管理
+
+  - **新建分支**
+
+  > 新建一个分支可以通过 `git branch <branch_name>` 命令新建，然后通过 `git checkout <branch_name>` 切换到刚刚新建的分支：
+  ```
+  $ git branch feature_a
+  $ git checkout feature_a
+  ```
+
+  > 如果想要新建一个分支并同时切换到那个分支上，可以运行一个带有 `-b` 参数的 `git checkout` 命令：
+  ```
+  $ git checkout -b feature_b
+  ```
+  
+  > 这个命令等同下面两条命令：
+  ```
+  $ git branch feature_b
+  $ git checkout feature_b
+  ```
