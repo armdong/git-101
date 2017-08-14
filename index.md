@@ -427,3 +427,10 @@ $ git commit --amend
   $ git merge feature_b
   ```
   这样，新分支做的修改就合并到主分支上了。
+
+  - **删除分支**
+
+  > 当代码合并到主分支以后，新分支无需再进行开发时，可以删除掉新分支，首先确认你处于主分支上，然后执行 `git branch -d <branch_name>` 带参数 `-b` 命令即可：
+  ```
+  $ git branch -d feature_b
+  ```
